@@ -5,10 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
@@ -35,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingText(name = "Sergio Martinez", degree = "Software developer")
+                    BusinessCard(name = "Sergio Martinez", degree = "Software developer")
                 }
             }
         }
@@ -43,36 +47,47 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingText(name: String, degree: String, modifier: Modifier = Modifier) {
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.padding(12.dp)
+fun BusinessCard(name: String, degree: String, modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(10.dp)
     ) {
-        Image(
-            painter = painterResource(R.drawable.gemini_generated_image_osgh2tosgh2tosgh),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = modifier.size(150.dp)
+        Column(
+            modifier = modifier
+                .fillMaxWidth()
+                .align(Alignment.Center),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Image(
+                painter = painterResource(R.drawable.gemini_generated_image_osgh2tosgh2tosgh),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = modifier
+                    .fillMaxWidth(0.5f)
+                    .height(200.dp)
+            )
+            Text(
+                text = name,
+                fontSize = 32.sp,
+                modifier = Modifier
 
-        )
-        Text(
-            text = name,
-            fontSize = 28.sp,
-            modifier = Modifier
+            )
+            Text(
+                text = degree,
+                fontSize = 16.sp,
+            )
+        }
 
-        )
-        Text(
-            text = degree,
-            fontSize = 16.sp,
-        )
+        Column() { }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun BirthdayCardPreview() {
+fun BusinessCardPreview() {
     P1_TarjetaPresentacion_Alonso_Lorenzo_Jonathan_Javier_CalvaTheme {
-        GreetingText(name = "Sergio Martinez", degree = "Software developer")
+        BusinessCard(name = "Sergio Martinez", degree = "Software developer")
     }
 }
