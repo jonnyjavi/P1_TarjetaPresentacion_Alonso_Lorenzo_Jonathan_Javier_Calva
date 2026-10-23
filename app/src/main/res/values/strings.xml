@@ -2,4 +2,7 @@
     <string name="app_name">P1_TarjetaPresentacion_Alonso_Lorenzo_Jonathan_Javier_Calva</string>
     <string name="name">Alonso Y Jonathan</string>
     <string name="degree">Software developers</string>
+    <string name="connectName">AlonsoYJonny</string>
+    <string name="email">ayj@betwin.es</string>
+    <string name="phoneN">+34 676767676</string>
 </resources>
