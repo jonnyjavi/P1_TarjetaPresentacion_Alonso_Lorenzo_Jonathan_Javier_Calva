@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.width
@@ -79,7 +80,8 @@ fun BusinessCard(name: String, degree: String, modifier: Modifier = Modifier) {
         Column(
             modifier = modifier
                 .fillMaxWidth()
-                .align(Alignment.Center),
+                .align(Alignment.Center)
+                .offset(y = (-40).dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -129,7 +131,7 @@ fun BusinessCard(name: String, degree: String, modifier: Modifier = Modifier) {
 
 @Composable
 fun detailBox(icon: ImageVector, text: String, uri: String) {
-    var uri = uri.toUri()
+    var uri: Uri = uri.toUri()
     val context = LocalContext.current
     Row(
         modifier = Modifier.fillMaxWidth(),
