@@ -109,7 +109,8 @@ fun BusinessCard(name: String, degree: String, modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(10.dp),
-            verticalArrangement = Arrangement.Bottom
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             detailBox(
                 Icons.Rounded.Phone,
@@ -131,18 +132,26 @@ fun detailBox(icon: ImageVector, text: String, uri: String) {
     var uri = uri.toUri()
     val context = LocalContext.current
     Row(
-        modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Absolute.Center
-
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center
     ) {
-        Button(onClick = {
+
+        Button(modifier = Modifier.width(220.dp),
+            onClick = {
             val intent = Intent(
                 Intent.ACTION_VIEW, uri
             )
             context.startActivity(intent)
         }) {
-            Icon(icon, null)
-            Spacer(Modifier.width(15.dp))
-            Text(text)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(icon, null)
+                Spacer(Modifier.width(15.dp))
+                Text(text)
+            }
         }
     }
 }
